@@ -1,5 +1,8 @@
 'use client';
 import { useState } from 'react';
+import Input from '@/components/Input';
+import TextArea from '@/components/TextArea';
+import CheckBox from '@/components/CheckBox';
 
 interface DroppedElementProps {
     type: string;
@@ -73,19 +76,8 @@ export default function Target() {
                         border: '1px solid lightgray',
                         cursor: 'grab',
                     }}
-                    className="slot"
                   >
-                    <input
-                        type="text"
-                        defaultValue={element.value}
-                        placeholder={element.placeholder}
-                        style={{
-                          width: '480px',
-                          border: '1px solid #ddd',
-                          padding: '10px',
-                          outline: 'none',
-                        }}
-                    />
+                    <Input type='text' value={element.value} placeholder={element.placeholder}/>
                   </div>
                 );
               } else if (element.type === 'textarea') {
@@ -102,19 +94,8 @@ export default function Target() {
                       border: '1px solid lightgray',
                       cursor: 'grab',
                     }}
-                    className="slot"
                   >
-                    <textarea
-                      defaultValue={element.value}
-                      placeholder={element.placeholder}
-                      style={{
-                        width: '480px',
-                        height: '100px',
-                        border: '1px solid #ddd',
-                        padding: '10px',
-                        outline: 'none',
-                      }}
-                    />
+                    <TextArea value={element.value} placeholder={element.placeholder} />
                   </div>
                 );
               } else if (element.type === 'checkbox') {
@@ -131,15 +112,8 @@ export default function Target() {
                       border: '1px solid lightgray',
                       cursor: 'grab',
                     }}
-                    className="slot"
                   >
-                    <input type="checkbox" id={`checkbox-${element.id}`} />
-                    <label
-                      htmlFor={`checkbox-${element.id}`}
-                      style={{ marginLeft: '5px' }}
-                    >
-                      {element.labelFor}
-                    </label>
+                    <CheckBox id={element.id} labelFor={element.labelFor}/>
                   </div>
                 );
               }
